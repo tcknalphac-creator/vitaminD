@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Generator - Project :D</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen py-8">
+    
+    <div class="container mx-auto px-4 max-w-4xl">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-black mb-2">
+                <span class="text-gray-800">Project</span>
+                <span class="text-yellow-500">:D</span>
+            </h1>
+            <p class="text-xl font-semibold text-gray-700">Personalized Link Generator</p>
+            <p class="text-sm text-gray-600">Create custom links for your customers</p>
+        </div>
+
+        <!-- Generator Form -->
+        <div class="bg-white rounded-2xl shadow-2xl p-8 mb-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Customer Information</h2>
+            
+            <form id="linkGeneratorForm">
+                <!-- Customer Name -->
+                <div class="mb-6">
+                    <label class="block font-semibold mb-2 text-gray-700">Customer Name*</label>
+                    <input 
+                        type="text" 
+                        id="customerName" 
+                        required
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                        placeholder="e.g., Ahmad, Sarah, John">
+                </div>
+
+                <!-- Gender -->
+                <div class="mb-6">
+                    <label class="block font-semibold mb-2 text-gray-700">Gender*</label>
+                    <div class="flex gap-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="male" class="mr-2 w-5 h-5" checked>
+                            <span class="text-lg">👨 Male</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="female" class="mr-2 w-5 h-5">
+                            <span class="text-lg">👩 Female</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Vitamin D Level -->
+                <div class="mb-6">
+                    <label class="block font-semibold mb-2 text-gray-700">Vitamin D Level (ng/mL)*</label>
+                    <input 
+                        type="number" 
+                        id="vitaminDLevel" 
+                        required
+                        step="0.1"
+                        min="0"
+                        max="150"
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-2xl font-bold text-center focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                        placeholder="e.g., 25.5">
+                </div>
+
+                <!-- Phone Number -->
+                <div class="mb-6">
+                    <label class="block font-semibold mb-2 text-gray-700">Customer Phone Number*</label>
+                    <div class="flex">
+                        <span class="inline-flex items-center px-4 bg-gray-200 border border-r-0 border-gray-300 rounded-l-lg text-gray-600 font-semibold">
+                            +60
+                        </span>
+                        <input 
+                            type="tel" 
+                            id="phoneNumber" 
+                            required
+                            class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                            placeholder="123456789 (without +60)">
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Enter number without country code</p>
+                </div>
+
+                <!-- Generate Button -->
+                <button 
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 py-4 rounded-lg font-black text-xl hover:shadow-xl transition transform hover:scale-105">
+                    🔗 Generate Links
+                </button>
+            </form>
+        </div>
+
+        <!-- Generated Links Section -->
+        <div id="generatedLinks" class="hidden bg-white rounded-2xl shadow-2xl p-8">
+            <h2 class="text-2xl font-bold mb-6 text-green-700">✅ Links Generated!</h2>
+            
+            <!-- Customer Link -->
+            <div class="mb-6 bg-blue-50 border-2 border-blue-300 rounded-xl p-6">
+                <h3 class="font-bold text-lg mb-3 text-blue-800">📋 Customer's Personalized Link:</h3>
+                <div class="flex gap-2 mb-3">
+                    <input 
+                        type="text" 
+                        id="customerLink" 
+                        readonly
+                        class="flex-1 px-4 py-3 bg-white border border-gray-300 rounded-lg text-sm font-mono">
+                    <button 
+                        onclick="copyToClipboard('customerLink')"
+                        class="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-600 transition">
+                        📋 Copy
+                    </button>
+                </div>
+                <p class="text-sm text-blue-700">Share this link with your customer to view their results</p>
+            </div>
+
+            <!-- WhatsApp Link -->
+            <div class="mb-6 bg-green-50 border-2 border-green-400 rounded-xl p-6">
+                <h3 class="font-bold text-lg mb-3 text-green-800">💬 Send via WhatsApp:</h3>
+                <div id="whatsappLinkContainer" class="mb-3">
+                    <!-- WhatsApp button will be inserted here -->
+                </div>
+                <p class="text-sm text-green-700">Click to send the personalized link to customer via WhatsApp</p>
+            </div>
+
+            <!-- WhatsApp Message Preview -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-xl p-6">
+                <h3 class="font-bold text-lg mb-3 text-gray-800">📱 Message Preview:</h3>
+                <div class="bg-white rounded-lg p-4 border border-gray-300">
+                    <p class="text-sm text-gray-700 whitespace-pre-wrap" id="messagePreview"></p>
+                </div>
+            </div>
+
+            <!-- Reset Button -->
+            <button 
+                onclick="resetForm()"
+                class="w-full mt-6 bg-gray-500 text-white py-3 rounded-lg font-bold hover:bg-gray-600 transition">
+                🔄 Generate Another Link
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Get the base URL dynamically
+        const baseURL = window.location.origin + window.location.pathname.replace('generator.html', 'index.html');
+
+        document.getElementById('linkGeneratorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generateLinks();
+        });
+
+        function generateLinks() {
+            // Get form values
+            const name = document.getElementById('customerName').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const level = document.getElementById('vitaminDLevel').value;
+            const phone = document.getElementById('phoneNumber').value.trim();
+
+            // Validate
+            if (!name || !level || !phone) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Generate customer link
+            const customerLink = `${baseURL}?name=${encodeURIComponent(name)}&vitaminDlevel=${level}`;
+            
+            // Determine pronoun based on gender
+            const pronoun = gender === 'male' ? 'Encik' : 'Puan';
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hi ${pronoun} ${name}! 👋
+
+Your Project :D Vitamin D test results are ready! 
+
+📊 View your personalized report here:
+${customerLink}
+
+You'll see:
+✅ Your Vitamin D level: ${level} ng/mL
+✅ What it means for your health
+
+Stay healthy! 😊
+- Team Project :D (Alpro Pharmacy)`;
+
+            // Generate WhatsApp link
+            const whatsappLink = `https://wa.me/60${phone}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Display generated links
+            document.getElementById('customerLink').value = customerLink;
+            document.getElementById('messagePreview').textContent = whatsappMessage;
+
+            // Create WhatsApp button
+            document.getElementById('whatsappLinkContainer').innerHTML = `
+                <a href="${whatsappLink}" 
+                   target="_blank"
+                   class="block w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg font-bold text-lg hover:shadow-xl transition transform hover:scale-105 text-center">
+                    <div class="flex items-center justify-center space-x-3">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <span>Send to ${pronoun} ${name} via WhatsApp</span>
+                    </div>
+                </a>
+            `;
+
+            // Show generated links section
+            document.getElementById('linkGeneratorForm').parentElement.classList.add('hidden');
+            document.getElementById('generatedLinks').classList.remove('hidden');
+
+            // Scroll to results
+            document.getElementById('generatedLinks').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyToClipboard(elementId) {
+            const input = document.getElementById(elementId);
+            input.select();
+            input.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            
+            // Show notification
+            showNotification('✅ Link copied to clipboard!');
+        }
+
+        function resetForm() {
+            document.getElementById('linkGeneratorForm').reset();
+            document.getElementById('linkGeneratorForm').parentElement.classList.remove('hidden');
+            document.getElementById('generatedLinks').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-6 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl z-50';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

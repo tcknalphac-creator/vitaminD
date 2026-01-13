@@ -1,4 +1,4 @@
-/* Custom Styles for Portfolio */
+/* Custom Styles for Vitamin D Project */
 
 * {
     scroll-behavior: smooth;
@@ -10,7 +10,7 @@ body {
 
 /* Hero Section Background */
 .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FDB913 0%, #F59E0B 50%, #EA580C 100%);
     position: relative;
     overflow: hidden;
 }
@@ -22,8 +22,15 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.3;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 .hero-section > * {
@@ -47,40 +54,47 @@ body {
     animation: fadeIn 1s ease-out;
 }
 
-/* About image placeholder hover effect */
-.about-image-placeholder {
-    transition: transform 0.3s ease;
+/* Result Card Status Colors */
+.status-optimal {
+    border-color: #10B981;
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
 }
 
-.about-image-placeholder:hover {
-    transform: scale(1.05);
+.status-sufficient {
+    border-color: #FBBF24;
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+}
+
+.status-insufficient {
+    border-color: #F59E0B;
+    background: linear-gradient(135deg, #FED7AA 0%, #FDBA74 100%);
+}
+
+.status-deficiency {
+    border-color: #EF4444;
+    background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+}
+
+.status-severe {
+    border-color: #DC2626;
+    background: linear-gradient(135deg, #FEE2E2 0%, #FCA5A5 100%);
+}
+
+/* Smooth transitions */
+a, button, input, select, textarea {
+    transition: all 0.3s ease;
 }
 
 /* Form focus styles */
 input:focus,
-textarea:focus {
-    border-color: #3b82f6;
+textarea:focus,
+select:focus {
+    border-color: #FDB913;
 }
 
-/* Responsive Navigation */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        space-y: 2;
-    }
-    
-    .hero-section h2 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-section p {
-        font-size: 1.125rem;
-    }
-}
-
-/* Smooth transitions */
-a, button {
-    transition: all 0.3s ease;
+/* Card hover effects */
+.hover\:shadow-2xl:hover {
+    box-shadow: 0 25px 50px -12px rgba(251, 191, 36, 0.25);
 }
 
 /* Custom scrollbar */
@@ -93,10 +107,40 @@ a, button {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #667eea;
+    background: #FDB913;
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #764ba2;
+    background: #F59E0B;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+    
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+}
+
+/* Loading Animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #FDB913;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
 }
