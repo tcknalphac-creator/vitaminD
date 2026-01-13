@@ -68,7 +68,52 @@ const translations = {
         stayHealthy: 'Jaga Kesihatan',
         footer: 'Semak Vitamin D, Hidup Lebih Cergas',
         contact: 'Hubungi Kami',
-        about: 'Tentang Project :D'
+        about: 'Tentang Project :D',
+        // Reality Check & Solution
+        symptoms: {
+            severe: 'Vitamin D rendah menyebabkan keletihan, mudah sakit, dan sakit badan. Pada tahap anda di bawah 10 ng/mL, simptom-simptom ini biasanya sangat jelas.',
+            deficiency: 'Vitamin D rendah menyebabkan keletihan, mudah sakit, dan sakit badan. Pada tahap semasa anda, anda mungkin sudah mengalami beberapa simptom ini.',
+            insufficient: 'Vitamin D rendah boleh menyebabkan keletihan ringan, kadang-kadang sakit, dan rasa tidak selesa. Simptom anda mungkin ringan tetapi ia nyata.',
+            sufficient: 'Tahap anda boleh diterima, tetapi anda boleh rasa lebih baik lagi! Tahap optimum menyokong tenaga, mood, dan imuniti puncak.',
+            optimal: 'Berita baik! Tahap Vitamin D anda menyokong kesihatan tulang, imuniti, dan tenaga yang cemerlang. Teruskan!'
+        },
+        urgency: {
+            severe: '⚠️ Ini TIDAK akan pulih secara semula jadi melainkan anda mengambil suplemen. Badan anda amat memerlukan Vitamin D untuk berfungsi dengan baik.',
+            deficiency: '⚠️ Jika terus menurun di bawah 10 ng/mL, simptom menjadi lebih jelas. Ini biasanya tidak akan pulih secara semula jadi melainkan anda mengambil suplemen.',
+            insufficient: '⚠️ Jika tidak diatasi, tahap anda mungkin menurun lebih jauh ke tahap kekurangan di mana simptom bertambah teruk.',
+            sufficient: 'Walaupun tidak mendesak, mengekalkan dan meningkatkan tahap anda menghalang penurunan masa hadapan, terutamanya jika anda kurang terdedah kepada cahaya matahari.',
+            optimal: 'Kekalkan tahap ini untuk terus berasa hebat. Tanpa suplemen atau cahaya matahari, tahap boleh menurun secara beransur-ansur.'
+        },
+        solution: {
+            severe: 'Kita perlu tingkatkan anda kembali ke tahap normal dalam 3 bulan. Pada 15 ng/mL atau lebih rendah, badan anda amat memerlukan suplemen dos tinggi.',
+            deficiency: 'Kita perlu tingkatkan anda kembali ke tahap normal dalam 3 bulan. Untuk mencapai tahap optimum, anda perlu pengambilan suplemen yang konsisten.',
+            insufficient: 'Mari tingkatkan anda ke tahap optimum dalam 2-3 bulan. Anda di bawah julat yang disyorkan dan badan anda memerlukan sokongan.',
+            sufficient: 'Mari optimumkan tahap anda ke 50+ ng/mL untuk prestasi puncak. Anda hampir - hanya perlu suplemen penyelenggaraan.',
+            optimal: 'Mari kekalkan tahap cemerlang anda! Anda hanya perlu penyelenggaraan biasa untuk kekal di puncak.'
+        },
+        dosage: {
+            severe: '2 kapsul sehari = 3000 IU D3',
+            deficiency: '2 kapsul sehari = 2000 IU D3',
+            insufficient: '1-2 kapsul sehari = 1000-2000 IU D3',
+            sufficient: '1 kapsul sehari = 1000 IU D3',
+            optimal: '1 kapsul sehari = 1000 IU D3'
+        },
+        cost: {
+            severe: 'Kurang daripada RM3 sehari untuk membina semula rizab Vitamin D anda',
+            deficiency: 'Kurang daripada RM2.50 sehari untuk membina semula rizab Vitamin D anda',
+            insufficient: 'Kurang daripada RM2 sehari untuk tenaga dan imuniti yang lebih baik',
+            sufficient: 'Kurang daripada RM1.50 sehari untuk penyelenggaraan',
+            optimal: 'Kurang daripada RM1.50 sehari untuk penyelenggaraan'
+        },
+        timeline: {
+            severe: '⏱️ Jangka Masa: 3-4 bulan untuk pemulihan penuh ke tahap optimum',
+            deficiency: '⏱️ Jangka Masa: 3 bulan untuk mencapai tahap mencukupi',
+            insufficient: '⏱️ Jangka Masa: 2-3 bulan untuk mencapai tahap optimum',
+            sufficient: '⏱️ Jangka Masa: 2 bulan untuk mencapai dan mengekalkan optimum',
+            optimal: '⏱️ Penyelenggaraan: Berterusan untuk mengekalkan tahap optimum'
+        },
+        costPerDayLabel: 'Kos sehari:',
+        coffeeComparison: 'Itu kurang dari harga secawan kopi untuk membina semula rizab Vitamin D badan anda!'
     },
     english: {
         hello: 'Hello',
@@ -132,7 +177,52 @@ const translations = {
         stayHealthy: 'Stay Healthy',
         footer: 'Check Vitamin D, Live Brighter',
         contact: 'Contact Us',
-        about: 'About Project :D'
+        about: 'About Project :D',
+        // Reality Check & Solution
+        symptoms: {
+            severe: 'Low Vitamin D causes tiredness, frequent sickness, and body pain. At your level below 10 ng/mL, these symptoms are usually very obvious.',
+            deficiency: 'Low Vitamin D causes tiredness, getting sick easily, and body pain. At your current level, you may already be experiencing some of these symptoms.',
+            insufficient: 'Low Vitamin D can cause mild tiredness, occasional sickness, and subtle body discomfort. Your symptoms may be mild but they\'re real.',
+            sufficient: 'Your level is acceptable, but you could feel even better! Optimal levels support peak energy, mood, and immunity.',
+            optimal: 'Great news! Your Vitamin D level supports excellent bone health, immunity, and energy. Keep it up!'
+        },
+        urgency: {
+            severe: '⚠️ This will NOT recover naturally unless you supplement. Your body urgently needs Vitamin D to function properly.',
+            deficiency: '⚠️ If it continues to drop below 10 ng/mL, symptoms become more obvious. This usually won\'t recover naturally unless you supplement.',
+            insufficient: '⚠️ If left unaddressed, your level may drop further into deficiency range where symptoms worsen significantly.',
+            sufficient: 'While not urgent, maintaining and improving your levels prevents future decline, especially if you have limited sun exposure.',
+            optimal: 'Maintain this level to continue feeling great. Without supplementation or sun exposure, levels can gradually decline.'
+        },
+        solution: {
+            severe: 'We need to boost you back to normal levels within 3 months. At 15 ng/mL or below, your body is in urgent need of high-dose supplementation.',
+            deficiency: 'We need to boost you back to normal levels within 3 months. To reach optimal levels, you need consistent supplementation.',
+            insufficient: 'Let\'s boost you to optimal levels within 2-3 months. You\'re below the recommended range and your body needs support.',
+            sufficient: 'Let\'s optimize your levels to 50+ ng/mL for peak performance. You\'re close - just need maintenance supplementation.',
+            optimal: 'Let\'s maintain your excellent level! You just need regular maintenance to stay at peak.'
+        },
+        dosage: {
+            severe: '2 capsules per day = 3000 IU D3',
+            deficiency: '2 capsules per day = 2000 IU D3',
+            insufficient: '1-2 capsules per day = 1000-2000 IU D3',
+            sufficient: '1 capsule per day = 1000 IU D3',
+            optimal: '1 capsule per day = 1000 IU D3'
+        },
+        cost: {
+            severe: 'Less than RM3 per day to rebuild your Vitamin D reserve',
+            deficiency: 'Less than RM2.50 per day to rebuild your Vitamin D reserve',
+            insufficient: 'Less than RM2 per day for better energy and immunity',
+            sufficient: 'Less than RM1.50 per day for maintenance',
+            optimal: 'Less than RM1.50 per day for maintenance'
+        },
+        timeline: {
+            severe: '⏱️ Timeline: 3-4 months for full recovery to optimal levels',
+            deficiency: '⏱️ Timeline: 3 months to reach sufficient levels',
+            insufficient: '⏱️ Timeline: 2-3 months to reach optimal levels',
+            sufficient: '⏱️ Timeline: 2 months to reach and maintain optimal',
+            optimal: '⏱️ Maintenance: Ongoing to preserve optimal levels'
+        },
+        costPerDayLabel: 'Cost per day:',
+        coffeeComparison: 'That\'s less than a cup of coffee to rebuild your body\'s Vitamin D reserve!'
     }
 };
 
@@ -192,121 +282,116 @@ function displayResultWithSalesScript(level) {
     const recommendedDosage = document.getElementById('recommendedDosage');
     const costBreakdown = document.getElementById('costBreakdown');
     const timelineNote = document.getElementById('timelineNote');
-    const dailyCost = document.getElementById('dailyCost');
-    const pharmacistAdvice = document.getElementById('pharmacistAdvice');
-    const oneMonthPrice = document.getElementById('oneMonthPrice');
-    const fullPrice = document.getElementById('fullPrice');
-    const bottleCount = document.getElementById('bottleCount');
-    const savings = document.getElementById('savings');
     
-    let status, statusClass, emoji, symptoms, urgency, solution, dosage, cost, timeline, advice;
-    let monthPrice, totalBottles, fullCost, savedAmount;
+    let status, statusClass, emoji, statusKey;
 
     // Sales Script Logic Based on Level
     if (level < 10) {
-        // Severe Deficiency - CRITICAL
-        status = 'SEVERELY DEFICIENT';
+        status = t('status.severe');
         statusClass = 'status-severe border-red-600 bg-red-100';
-        emoji = '🚨 Critical';
-        symptoms = 'Low Vitamin D causes tiredness, frequent sickness, and body pain. At your level below 10 ng/mL, these symptoms are usually very obvious.';
-        urgency = '⚠️ This will NOT recover naturally unless you supplement. Your body urgently needs Vitamin D to function properly.';
-        solution = 'We need to boost you back to normal levels within 3 months. At 15 ng/mL or below, your body is in urgent need of high-dose supplementation.';
-        dosage = '2 capsules per day = 3000 IU D3';
-        cost = 'That\'s less than RM3 per day to rebuild your Vitamin D reserve';
-        timeline = '⏱️ Timeline: 3-4 months for full recovery to optimal levels';
-        advice = `For your critical level (${level} ng/mL), we strongly recommend the complete 4-5 bottle treatment plan. However, you can start with 1 bottle first to feel the energy improvement, then continue the full recovery plan.`;
-        monthPrice = 88;
-        totalBottles = 5;
-        fullCost = totalBottles * 88;
-        savedAmount = 50;
-        
+        emoji = t('emoji.severe');
+        statusKey = 'severe';
     } else if (level < 20) {
-        // Deficiency - HIGH PRIORITY
-        status = 'DEFICIENT';
+        status = t('status.deficiency');
         statusClass = 'status-deficiency border-red-500 bg-red-50';
-        emoji = '🔴 Action Needed';
-        symptoms = 'Low Vitamin D causes tiredness, getting sick easily, and body pain. At your current level, you may already be experiencing some of these symptoms.';
-        urgency = '⚠️ If it continues to drop below 10 ng/mL, symptoms become more obvious. This usually won\'t recover naturally unless you supplement.';
-        solution = `We need to boost you back to normal levels within 3 months. Your Vitamin D is at ${level} ng/mL - to reach optimal levels, you need consistent supplementation.`;
-        dosage = '2 capsules per day = 2000 IU D3';
-        cost = 'Less than RM2.50 per day to rebuild your Vitamin D reserve';
-        timeline = '⏱️ Timeline: 3 months to reach sufficient levels';
-        advice = `For your level (${level} ng/mL), we usually recommend 4-5 bottles for the full treatment plan. You can start with 1 bottle first and see how your energy improves after 1 month. If you feel better, continue the full recovery plan.`;
-        monthPrice = 68;
-        totalBottles = 4;
-        fullCost = totalBottles * 68;
-        savedAmount = 40;
-        
+        emoji = t('emoji.deficiency');
+        statusKey = 'deficiency';
     } else if (level < 30) {
-        // Insufficiency - NEEDS ATTENTION
-        status = 'INSUFFICIENT';
+        status = t('status.insufficient');
         statusClass = 'status-insufficient border-orange-500 bg-orange-50';
-        emoji = '⚠️ Below Optimal';
-        symptoms = 'Low Vitamin D can cause mild tiredness, occasional sickness, and subtle body discomfort. Your symptoms may be mild but they\'re real.';
-        urgency = '⚠️ If left unaddressed, your level may drop further into deficiency range where symptoms worsen significantly.';
-        solution = `Let's boost you to optimal levels within 2-3 months. At ${level} ng/mL, you're below the recommended range and your body needs support.`;
-        dosage = '1-2 capsules per day = 1000-2000 IU D3';
-        cost = 'Less than RM2 per day for better energy and immunity';
-        timeline = '⏱️ Timeline: 2-3 months to reach optimal levels';
-        advice = `For your level (${level} ng/mL), we recommend 3-4 bottles to fully recover. Starting with 1 bottle lets you experience the improvement first. You'll likely notice better energy within the first month!`;
-        monthPrice = 68;
-        totalBottles = 3;
-        fullCost = totalBottles * 68;
-        savedAmount = 30;
-        
+        emoji = t('emoji.insufficient');
+        statusKey = 'insufficient';
     } else if (level < 50) {
-        // Sufficient but can improve
-        status = 'SUFFICIENT';
+        status = t('status.sufficient');
         statusClass = 'status-sufficient border-yellow-500 bg-yellow-50';
-        emoji = '😊 Room to Improve';
-        symptoms = 'Your level is acceptable, but you could feel even better! Optimal levels support peak energy, mood, and immunity.';
-        urgency = 'While not urgent, maintaining and improving your levels prevents future decline, especially if you have limited sun exposure.';
-        solution = `Let's optimize your levels to 50+ ng/mL for peak performance. At ${level} ng/mL, you're close - just need maintenance supplementation.`;
-        dosage = '1 capsule per day = 1000 IU D3';
-        cost = 'Less than RM1.50 per day for maintenance';
-        timeline = '⏱️ Timeline: 2 months to reach and maintain optimal';
-        advice = `For your level (${level} ng/mL), 2-3 bottles will get you to optimal and maintain it. Many people start with 1 bottle and notice improved energy and mood!`;
-        monthPrice = 45;
-        totalBottles = 2;
-        fullCost = totalBottles * 45;
-        savedAmount = 15;
-        
+        emoji = t('emoji.sufficient');
+        statusKey = 'sufficient';
     } else {
-        // Optimal - Maintenance
-        status = 'OPTIMAL';
+        status = t('status.optimal');
         statusClass = 'status-optimal border-green-500 bg-green-50';
-        emoji = '🎉 Excellent!';
-        symptoms = 'Great news! Your Vitamin D level supports excellent bone health, immunity, and energy. Keep it up!';
-        urgency = 'Maintain this level to continue feeling great. Without supplementation or sun exposure, levels can gradually decline.';
-        solution = `Let's maintain your excellent level! At ${level} ng/mL, you just need regular maintenance to stay at peak.`;
-        dosage = '1 capsule per day = 1000 IU D3';
-        cost = 'Less than RM1.50 per day for maintenance';
-        timeline = '⏱️ Maintenance: Ongoing to preserve optimal levels';
-        advice = `For maintenance at your level (${level} ng/mL), 2-3 bottles (4-6 months supply) keeps you in the optimal zone year-round!`;
-        monthPrice = 45;
-        totalBottles = 2;
-        fullCost = totalBottles * 45;
-        savedAmount = 15;
+        emoji = t('emoji.optimal');
+        statusKey = 'optimal';
     }
 
-    // Update UI
+    // Update UI - Status Badge
     statusDisplay.className = `inline-block px-8 py-4 rounded-2xl border-4 ${statusClass}`;
     statusTitle.textContent = status;
     statusEmoji.textContent = emoji;
-    symptomsDescription.textContent = symptoms;
-    urgencyMessage.textContent = urgency;
-    solutionText.textContent = solution;
-    recommendedDosage.textContent = dosage;
-    costBreakdown.textContent = cost;
-    timelineNote.textContent = timeline;
-    dailyCost.textContent = cost.split('than ')[1].split(' ')[0] + ' ' + cost.split('than ')[1].split(' ')[1];
-    pharmacistAdvice.textContent = advice;
     
-    // Pricing
-    oneMonthPrice.textContent = `RM ${monthPrice}`;
-    bottleCount.textContent = `${totalBottles} bottles (${totalBottles * 2} months supply)`;
-    fullPrice.textContent = `RM ${fullCost}`;
-    savings.textContent = `Save RM ${savedAmount}!`;
+    // Update UI - Reality Check & Solution
+    symptomsDescription.textContent = t(`symptoms.${statusKey}`);
+    urgencyMessage.textContent = t(`urgency.${statusKey}`);
+    solutionText.textContent = t(`solution.${statusKey}`);
+    recommendedDosage.textContent = t(`dosage.${statusKey}`);
+    costBreakdown.textContent = t(`cost.${statusKey}`);
+    timelineNote.textContent = t(`timeline.${statusKey}`);
+    
+    // Update daily cost display (extract from cost text)
+    const costText = t(`cost.${statusKey}`);
+    // Extract "Less than RMX" or "Kurang daripada RMX"
+    const costMatch = costText.match(/(Less than|Kurang daripada)\s+(RM[\d.]+)/i);
+    if (costMatch) {
+        document.getElementById('dailyCost').textContent = costMatch[2];
+    }
+    
+    // Translate static page elements
+    translatePage();
+}
+
+// Translate all page elements
+function translatePage() {
+    // Update all translatable elements
+    const translatableElements = {
+        'ifYouDontTitle': 'ifYouDont',
+        'fatigueTitle': 'fatigue',
+        'fatigueDesc': 'fatigueDesc',
+        'bonesTitle': 'bones',
+        'bonesDesc': 'bonesDesc',
+        'immunityTitle': 'immunity',
+        'immunityDesc': 'immunityDesc',
+        'depressionTitle': 'depression',
+        'depressionDesc': 'depressionDesc',
+        'painTitle': 'pain',
+        'painDesc': 'painDesc',
+        'timeWaitingTitle': 'timeWaiting',
+        'timeWaitingDesc': 'timeDesc',
+        'dontLetWorseTitle': 'dontLetWorse',
+        'fixNowBtn': 'fixNow',
+        'getBeforeWorse': 'getBeforeWorse',
+        'crisisTitle': 'crisis',
+        'crisisDesc': 'crisisDesc',
+        'deficientStat': 'deficientStat',
+        'epidemicDesc': 'epidemicDesc',
+        'fatigueStat': 'fatigueStat',
+        'tiredDesc': 'tiredDesc',
+        'depressionStat': 'depressionStat',
+        'moodDesc': 'moodDesc',
+        'limitedOfferTitle': 'limitedOffer',
+        'getSuppTitle': 'getSupp',
+        'projectPriceLabel': 'projectPrice',
+        'wasPriceLabel': 'wasPrice',
+        'youSaveLabel': 'youSave',
+        'yourVoucherLabel': 'yourVoucher',
+        'extraDiscLabel': 'extraDisc',
+        'whatYouGetLabel': 'whatYouGet',
+        'capsulesLabel': 'capsules',
+        'per1000Label': 'per1000',
+        'easySwallowLabel': 'easySwallow',
+        'fastDelivLabel': 'fastDeliv',
+        'orderNowBtn': 'orderNow',
+        'clickOrderLabel': 'clickOrder',
+        'limitedAlertTitle': 'limitedAlert',
+        'limitedAlertDesc': 'limitedDesc',
+        'costPerDayLabel': 'costPerDayLabel',
+        'coffeeComparison': 'coffeeComparison'
+    };
+    
+    for (const [elementId, translationKey] of Object.entries(translatableElements)) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.textContent = t(translationKey);
+        }
+    }
 }
 
 // Check Vitamin D Level and Provide Recommendation
@@ -401,7 +486,7 @@ function scrollToSupplements() {
 // Add to Cart Function (Simplified for WhatsApp)
 function addToCart(productName, price, voucher) {
     const whatsappMsg = `Hi! I want to order ${productName} at RM${price}. My voucher code: ${voucher}`;
-    const whatsappURL = `https://wa.me/60184601923?text=${encodeURIComponent(whatsappMsg)}`;
+    const whatsappURL = `https://wa.me/60134601923?text=${encodeURIComponent(whatsappMsg)}`;
     window.open(whatsappURL, '_blank');
     showNotification(`📱 Opening WhatsApp to complete your order!`);
 }
@@ -419,7 +504,7 @@ function removeFromCart(index) {
 // Checkout Function (Redirect to WhatsApp)
 function checkout() {
     const whatsappMsg = 'Hi! I want to order Powerlife Vitamin D3 1000IU at RM43 (Project :D price). My voucher code: VD5OFF';
-    const whatsappURL = `https://wa.me/60184601923?text=${encodeURIComponent(whatsappMsg)}`;
+    const whatsappURL = `https://wa.me/60134601923?text=${encodeURIComponent(whatsappMsg)}`;
     window.open(whatsappURL, '_blank');
     showNotification('📱 Redirecting to WhatsApp...');
 }

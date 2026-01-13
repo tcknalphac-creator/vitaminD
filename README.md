@@ -1,5 +1,20 @@
 # Project :D - Vitamin D Recommendation System
 
+## 🌐 MULTI-LANGUAGE SUPPORT (NEW!)
+
+**The system now fully supports English & Bahasa Melayu!**
+
+### How It Works:
+1. Staff selects language in `generator.html`
+2. URL includes `&lang=english` or `&lang=malay`
+3. Customer page automatically translates ALL content
+
+### Example URLs:
+- **English:** `?name=Ben&vitaminDlevel=20&lang=english`
+- **Malay:** `?name=Ahmad&vitaminDlevel=20&lang=malay`
+
+---
+
 ## 🎯 Sales-Focused Landing Page
 
 This system follows the **proven consultation script** to maximize conversion:
