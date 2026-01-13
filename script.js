@@ -1,7 +1,161 @@
 // Vitamin D Recommendation System - Sales Conversion Focused
 // Following consultation script: Reveal → Normalize + Urgency → Present Solution
+// Multi-language support: English & Bahasa Melayu
 
 let cart = [];
+
+// Translation dictionary
+const translations = {
+    malay: {
+        hello: 'Hai',
+        testResults: 'Keputusan Ujian Project :D',
+        yourLevel: 'Tahap Vitamin D Anda',
+        status: {
+            severe: 'SANGAT RENDAH',
+            deficiency: 'KEKURANGAN',
+            insufficient: 'TIDAK MENCUKUPI',
+            sufficient: 'MENCUKUPI',
+            optimal: 'OPTIMUM'
+        },
+        emoji: {
+            severe: '🚨 Kritikal',
+            deficiency: '🔴 Perlu Tindakan',
+            insufficient: '⚠️ Di Bawah Optimum',
+            sufficient: '😊 Boleh Diperbaiki',
+            optimal: '🎉 Cemerlang!'
+        },
+        ifYouDont: 'Jika Anda Tidak Mengambil Tindakan Sekarang:',
+        fatigue: 'Keletihan Berterusan Akan Bertambah Teruk',
+        fatigueDesc: 'Anda akan rasa lebih penat setiap hari, tidak kira berapa lama anda tidur',
+        bones: 'Risiko Patah Tulang & Osteoporosis',
+        bonesDesc: 'Tulang anda menjadi lemah dan rapuh dari masa ke masa',
+        immunity: 'Sistem Imun Terus Melemah',
+        immunityDesc: 'Mudah sakit, lambat sembuh',
+        depression: 'Kemurungan & Keresahan Mungkin Berkembang',
+        depressionDesc: 'Risiko kemurungan 5× lebih tinggi dengan Vitamin D rendah',
+        pain: 'Sakit Badan & Kelemahan Otot Kronik',
+        painDesc: 'Aktiviti harian menjadi lebih susah dan menyakitkan',
+        timeWaiting: 'Setiap Hari Anda Tunggu, Lebih Susah Untuk Pulih',
+        timeDesc: 'Badan anda sedang kehabisan rizab Vitamin D sekarang. Semakin lama anda tunggu, semakin teruk simptom dan semakin lama masa untuk rasa normal semula.',
+        dontLetWorse: 'Jangan Biarkan Ia Bertambah Teruk!',
+        fixNow: '⚠️ BAIKI SEKARANG - RM 43',
+        getBeforeWorse: '⬇️ Dapatkan suplemen sebelum simptom bertambah teruk',
+        crisis: 'Ini Adalah Krisis Kesihatan Yang Serius',
+        crisisDesc: 'Lihat apa yang berlaku kepada rakyat Malaysia dengan Vitamin D rendah',
+        deficientStat: 'Rakyat Malaysia Kekurangan',
+        epidemicDesc: 'Anda adalah sebahagian daripada wabak senyap!',
+        fatigueStat: 'Dengan Keletihan Ada Vitamin D Rendah',
+        tiredDesc: 'Perasaan penat itu tidak normal!',
+        depressionStat: 'Risiko Kemurungan Lebih Tinggi',
+        moodDesc: 'Mood anda terjejas!',
+        shopNow: 'Beli Sekarang',
+        limitedOffer: '🔥 TAWARAN TERHAD',
+        getSupp: 'Dapatkan Suplemen Anda Sekarang',
+        projectPrice: 'Harga Istimewa Project :D',
+        wasPrice: 'Harga Asal RM 62',
+        youSave: 'Anda Jimat RM 19!',
+        yourVoucher: '🎟️ KOD BAUCAR ANDA:',
+        extraDisc: '💰 Diskaun tambahan RM 5 sudah termasuk!',
+        whatYouGet: '✨ Apa Yang Anda Dapat:',
+        capsules: '60 kapsul (2 bulan)',
+        per1000: '1000 IU setiap kapsul',
+        easySwallow: 'Mudah ditelan',
+        fastDeliv: 'Penghantaran pantas',
+        orderNow: 'PESAN SEKARANG - RM 43',
+        clickOrder: '💬 Klik untuk pesan via WhatsApp',
+        limitedAlert: 'Stok Terhad!',
+        limitedDesc: 'Harga istimewa Project :D tersedia selagi stok masih ada. Pesan sekarang untuk pastikan bekalan anda.',
+        stayHealthy: 'Jaga Kesihatan',
+        footer: 'Semak Vitamin D, Hidup Lebih Cergas',
+        contact: 'Hubungi Kami',
+        about: 'Tentang Project :D'
+    },
+    english: {
+        hello: 'Hello',
+        testResults: 'Project :D Test Results',
+        yourLevel: 'Your Vitamin D Level',
+        status: {
+            severe: 'SEVERELY DEFICIENT',
+            deficiency: 'DEFICIENT',
+            insufficient: 'INSUFFICIENT',
+            sufficient: 'SUFFICIENT',
+            optimal: 'OPTIMAL'
+        },
+        emoji: {
+            severe: '🚨 Critical',
+            deficiency: '🔴 Action Needed',
+            insufficient: '⚠️ Below Optimal',
+            sufficient: '😊 Room to Improve',
+            optimal: '🎉 Excellent!'
+        },
+        ifYouDont: 'If You Don\'t Take Action Now:',
+        fatigue: 'Constant Fatigue Will Get Worse',
+        fatigueDesc: 'You\'ll feel more tired every day, no matter how much you sleep',
+        bones: 'Risk of Bone Fractures & Osteoporosis',
+        bonesDesc: 'Your bones become weak and brittle over time',
+        immunity: 'Immune System Keeps Weakening',
+        immunityDesc: 'Get sick more often, take longer to recover',
+        depression: 'Depression & Anxiety May Develop',
+        depressionDesc: '5× higher risk of depression with low Vitamin D',
+        pain: 'Chronic Body Pain & Muscle Weakness',
+        painDesc: 'Daily activities become harder and more painful',
+        timeWaiting: 'Every Day You Wait, It Gets Harder to Recover',
+        timeDesc: 'Your body is depleting Vitamin D reserves right now. The longer you wait, the more severe your symptoms become and the longer it takes to feel normal again.',
+        dontLetWorse: 'Don\'t Let It Get Worse!',
+        fixNow: '⚠️ FIX IT NOW - RM 43',
+        getBeforeWorse: '⬇️ Get your supplement before symptoms worsen',
+        crisis: 'This Is A Serious Health Crisis',
+        crisisDesc: 'Look at what\'s happening to Malaysians with low Vitamin D',
+        deficientStat: 'Malaysians Are Deficient',
+        epidemicDesc: 'You\'re part of a silent epidemic!',
+        fatigueStat: 'With Fatigue Have Low Vitamin D',
+        tiredDesc: 'That tired feeling isn\'t normal!',
+        depressionStat: 'Higher Depression Risk',
+        moodDesc: 'Your mood is suffering!',
+        shopNow: 'Shop Now',
+        limitedOffer: '🔥 LIMITED TIME OFFER',
+        getSupp: 'Get Your Supplement Now',
+        projectPrice: 'Special Project :D Pricing',
+        wasPrice: 'Was RM 62',
+        youSave: 'You Save RM 19!',
+        yourVoucher: '🎟️ YOUR VOUCHER CODE:',
+        extraDisc: '💰 Extra RM 5 discount already included!',
+        whatYouGet: '✨ What You Get:',
+        capsules: '60 capsules (2 months)',
+        per1000: '1000 IU per capsule',
+        easySwallow: 'Easy to swallow',
+        fastDeliv: 'Fast delivery',
+        orderNow: 'ORDER NOW - RM 43',
+        clickOrder: '💬 Click to order via WhatsApp',
+        limitedAlert: 'Limited Stock Alert!',
+        limitedDesc: 'Special Project :D pricing available while stocks last. Order now to secure your supply.',
+        stayHealthy: 'Stay Healthy',
+        footer: 'Check Vitamin D, Live Brighter',
+        contact: 'Contact Us',
+        about: 'About Project :D'
+    }
+};
+
+// Get current language from URL or default to English
+function getCurrentLanguage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    return (lang === 'malay') ? 'malay' : 'english';
+}
+
+// Get translation text
+function t(key) {
+    const lang = getCurrentLanguage();
+    const keys = key.split('.');
+    let value = translations[lang];
+    
+    for (const k of keys) {
+        value = value[k];
+        if (!value) return key; // Return key if translation not found
+    }
+    
+    return value;
+}
 
 // Parse URL Parameters and Auto-Display Results
 function initializeFromURL() {
