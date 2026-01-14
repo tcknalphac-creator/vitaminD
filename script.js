@@ -113,7 +113,27 @@ const translations = {
             optimal: '⏱️ Penyelenggaraan: Berterusan untuk mengekalkan tahap optimum'
         },
         costPerDayLabel: 'Kos sehari:',
-        coffeeComparison: 'Itu kurang dari harga secawan kopi untuk membina semula rizab Vitamin D badan anda!'
+        coffeeComparison: 'Itu kurang dari harga secawan kopi untuk membina semula rizab Vitamin D badan anda!',
+        // New conversion elements
+        trustedByLabel: 'Dipercayai oleh Farmasi Terkemuka',
+        realResultsTitle: 'Hasil Sebenar daripada Project :D',
+        realResultsSubtitle: 'Sertai ribuan yang telah memperbaiki kesihatan mereka',
+        verifiedPurchase: 'Pembelian Disahkan',
+        specialPriceEnds: 'Harga Istimewa Tamat Dalam:',
+        freeShippingLabel: 'Penghantaran PERCUMA',
+        pharmacistRecTitle: 'Disyorkan oleh Ahli Farmasi',
+        pharmacistRecDesc: 'Ahli farmasi Alpro mengesyorkan suplemen Project :D untuk pemulihan Vitamin D optimum berdasarkan keputusan ujian anda.',
+        guaranteeTitle: 'Jaminan Wang Dikembalikan 30 Hari',
+        guaranteeDesc: 'Tidak rasa lebih baik? Dapatkan 100% bayaran balik. Tiada soalan ditanya.',
+        guaranteeTerms: '*T&C terpakai - Sah untuk pelanggan pertama kali',
+        yourMessageLabel: 'Mesej anda akan menjadi:',
+        whatsappPreview: '"Hi! Saya nak order Powerlife Vitamin D3 1000IU pada harga RM43. Voucher: VD5OFF"',
+        instantReplyLabel: '✓ Balasan segera dari team kami',
+        securePaymentLabel: 'Kaedah Pembayaran Selamat:',
+        stockAlertTitle: 'Hanya <span class="text-red-600 text-2xl font-black">7 botol</span> lagi pada harga ini!',
+        customersViewingLabel: '15 pelanggan sedang melihat ini sekarang',
+        stockRemainingLabel: '23% tinggal',
+        stickyOrderBtnText: 'PESAN SEKARANG - RM 43'
     },
     english: {
         hello: 'Hello',
@@ -222,7 +242,27 @@ const translations = {
             optimal: '⏱️ Maintenance: Ongoing to preserve optimal levels'
         },
         costPerDayLabel: 'Cost per day:',
-        coffeeComparison: 'That\'s less than a cup of coffee to rebuild your body\'s Vitamin D reserve!'
+        coffeeComparison: 'That\'s less than a cup of coffee to rebuild your body\'s Vitamin D reserve!',
+        // New conversion elements
+        trustedByLabel: 'Trusted by Leading Pharmacies',
+        realResultsTitle: 'Real Results from Project :D',
+        realResultsSubtitle: 'Join thousands who improved their health',
+        verifiedPurchase: 'Verified Purchase',
+        specialPriceEnds: 'Special Price Ends In:',
+        freeShippingLabel: 'FREE Shipping',
+        pharmacistRecTitle: 'Pharmacist Recommended',
+        pharmacistRecDesc: 'Alpro pharmacists recommend Project :D supplements for optimal Vitamin D recovery based on your test results.',
+        guaranteeTitle: '30-Day Money-Back Guarantee',
+        guaranteeDesc: 'Not feeling better? Get 100% refund. No questions asked.',
+        guaranteeTerms: '*T&C apply - Valid for first-time customers',
+        yourMessageLabel: 'Your message will be:',
+        whatsappPreview: '"Hi! I want to order Powerlife Vitamin D3 1000IU at RM43. Voucher: VD5OFF"',
+        instantReplyLabel: '✓ Instant reply from our team',
+        securePaymentLabel: 'Secure Payment Methods:',
+        stockAlertTitle: 'Only <span class="text-red-600 text-2xl font-black">7 bottles</span> left at this price!',
+        customersViewingLabel: '15 customers viewing this right now',
+        stockRemainingLabel: '23% remaining',
+        stickyOrderBtnText: 'ORDER NOW - RM 43'
     }
 };
 
@@ -383,7 +423,21 @@ function translatePage() {
         'limitedAlertTitle': 'limitedAlert',
         'limitedAlertDesc': 'limitedDesc',
         'costPerDayLabel': 'costPerDayLabel',
-        'coffeeComparison': 'coffeeComparison'
+        'coffeeComparison': 'coffeeComparison',
+        // New conversion elements
+        'specialPriceEnds': 'specialPriceEnds',
+        'freeShippingLabel': 'freeShippingLabel',
+        'pharmacistRecTitle': 'pharmacistRecTitle',
+        'pharmacistRecDesc': 'pharmacistRecDesc',
+        'guaranteeTitle': 'guaranteeTitle',
+        'guaranteeDesc': 'guaranteeDesc',
+        'guaranteeTerms': 'guaranteeTerms',
+        'yourMessageLabel': 'yourMessageLabel',
+        'instantReplyLabel': 'instantReplyLabel',
+        'securePaymentLabel': 'securePaymentLabel',
+        'customersViewingLabel': 'customersViewingLabel',
+        'stockRemainingLabel': 'stockRemainingLabel',
+        'stickyOrderBtnText': 'stickyOrderBtnText'
     };
     
     for (const [elementId, translationKey] of Object.entries(translatableElements)) {
@@ -391,6 +445,18 @@ function translatePage() {
         if (element) {
             element.textContent = t(translationKey);
         }
+    }
+    
+    // Special handling for HTML content (stock alert with inline HTML)
+    const stockAlertTitle = document.getElementById('stockAlertTitle');
+    if (stockAlertTitle) {
+        stockAlertTitle.innerHTML = t('stockAlertTitle');
+    }
+    
+    // Special handling for WhatsApp preview
+    const whatsappPreview = document.getElementById('whatsappPreview');
+    if (whatsappPreview) {
+        whatsappPreview.textContent = t('whatsappPreview');
     }
 }
 
@@ -466,16 +532,68 @@ function checkVitaminD() {
     resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// Copy Voucher to Clipboard
+// Copy Voucher to Clipboard with Visual Feedback
 function copyVoucher(code) {
-    const tempInput = document.createElement('input');
-    tempInput.value = code;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand('copy');
-    document.body.removeChild(tempInput);
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        const originalClass = btn.className;
+        
+        btn.textContent = '✓ COPIED!';
+        btn.className = btn.className.replace('bg-orange-500', 'bg-green-600').replace('hover:bg-orange-600', 'hover:bg-green-700');
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.className = originalClass;
+        }, 2000);
+    }).catch(() => {
+        // Fallback for older browsers
+        const tempInput = document.createElement('input');
+        tempInput.value = code;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+    });
     
     showNotification(`✅ Voucher "${code}" copied! Apply at checkout for RM5 OFF`);
+}
+
+// Countdown Timer
+function startCountdown() {
+    const countdownEl = document.getElementById('countdown');
+    if (!countdownEl) return;
+    
+    let hours = 23, minutes = 45, seconds = 12;
+    
+    setInterval(() => {
+        seconds--;
+        if (seconds < 0) { seconds = 59; minutes--; }
+        if (minutes < 0) { minutes = 59; hours--; }
+        if (hours < 0) { hours = 23; minutes = 45; seconds = 12; }
+        
+        countdownEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    }, 1000);
+}
+
+// Sticky Mobile Button
+function initStickyButton() {
+    const stickyBtn = document.getElementById('stickyOrderBtn');
+    if (!stickyBtn) return;
+    
+    window.addEventListener('scroll', function() {
+        const productSection = document.getElementById('supplements');
+        if (!productSection) return;
+        
+        const rect = productSection.getBoundingClientRect();
+        
+        // Show sticky button when product section is scrolled past
+        if (rect.top < -500) {
+            stickyBtn.classList.remove('hidden');
+        } else {
+            stickyBtn.classList.add('hidden');
+        }
+    });
 }
 
 // Scroll to supplements section
@@ -552,6 +670,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     initializeFromURL();
+    
+    // Initialize countdown timer
+    startCountdown();
+    
+    // Initialize sticky mobile button
+    initStickyButton();
     
     // Example URLs for testing
     console.log('📊 Test URLs:');
