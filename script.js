@@ -1,8 +1,10 @@
 // Vitamin D Recommendation System - Sales Conversion Focused
 // Following consultation script: Reveal → Normalize + Urgency → Present Solution
 // Multi-language support: English & Bahasa Melayu
+// Firebase Analytics Integration
 
 let cart = [];
+let currentVisitId = null; // Store visit ID for tracking actions
 
 // Translation dictionary
 const translations = {
@@ -288,12 +290,22 @@ function t(key) {
 }
 
 // Parse URL Parameters and Auto-Display Results
-function initializeFromURL() {
+async function initializeFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
     const vitaminDLevel = urlParams.get('vitaminDlevel') || urlParams.get('level');
+    const lang = urlParams.get('lang');
     
     if (name || vitaminDLevel) {
+        // Track visit in Firebase
+        if (typeof trackVisit === 'function') {
+            currentVisitId = await trackVisit({
+                name: name,
+                level: vitaminDLevel,
+                lang: lang
+            });
+        }
+        
         // Update customer name
         if (name) {
             document.getElementById('customerName').textContent = name;
@@ -534,6 +546,11 @@ function checkVitaminD() {
 
 // Copy Voucher to Clipboard with Visual Feedback
 function copyVoucher(code) {
+    // Track voucher copy action
+    if (currentVisitId && typeof trackAction === 'function') {
+        trackAction(currentVisitId, 'voucher_copied', { voucherCode: code });
+    }
+    
     navigator.clipboard.writeText(code).then(() => {
         const btn = event.target;
         const originalText = btn.textContent;
@@ -557,6 +574,19 @@ function copyVoucher(code) {
     });
     
     showNotification(`✅ Voucher "${code}" copied! Apply at checkout for RM5 OFF`);
+}
+
+// Track Order Button Click (Conversion)
+function trackOrderClick() {
+    if (currentVisitId && typeof trackConversion === 'function') {
+        const urlParams = new URLSearchParams(window.location.search);
+        trackConversion(currentVisitId, {
+            customerName: urlParams.get('name') || 'Unknown',
+            vitaminDLevel: urlParams.get('vitaminDlevel') || urlParams.get('level'),
+            language: urlParams.get('lang') || 'english',
+            timestamp: new Date().toISOString()
+        });
+    }
 }
 
 // Countdown Timer
